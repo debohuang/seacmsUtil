@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>{channelpage:typename} 第{channelpage:page}页-{seacms:sitename}</title>
+<meta name="keywords" content="{channelpage:typename}第{channelpage:page}页{channelpage:keywords}" />
+<meta name="description" content="{channelpage:typename}第{channelpage:page}页{channelpage:description}" />
+{seacms:load head_include.html}
+</head>
+{seacms:top}
+
+
+<div class="wrap clearfix">
+        <div class="channeltab clearfix">
+              <div class="sypx">
+                  {channelpage:typetext}
+              </div>
+              <div class="sytab">
+                    <span>筛选<em class="ico"></em></span>
+              </div>
+        </div>
+        <div class="selectlist clearfix">
+              <ul>
+                    <li class="clearfix">
+                                <span><em>分类</em></span>
+                                {seacms:typecaslist}
+                                <span><a href="[typecaslist:link]"{if:{channelpage:typename}==[typecaslist:value]} class="on"{end if}>[typecaslist:value]</a></span>
+                                {/seacms:typecaslist}
+                    </li>
+                    <li class="clearfix">
+                                <span><em>剧情</em></span>
+                                {seacms:jqcaslist}
+                                <span><a href="[jqcaslist:link]">[jqcaslist:value]</a></span>
+                                {/seacms:jqcaslist}
+
+                    </li>
+                    <li class="clearfix">
+                                <span><em>年代</em></span>
+                                {seacms:yearcaslist}
+                                <span><a href="[yearcaslist:link]">{if:[yearcaslist:value]==more}更早{else}[yearcaslist:value]{end if}</a></span>
+                                {/seacms:yearcaslist}
+
+                    </li>
+                     <li class="clearfix">
+                                <span><em>地区</em></span>
+                                {seacms:areacaslist}
+                                <span><a href="[areacaslist:link]">[areacaslist:value]</a></span>
+                                {/seacms:areacaslist}
+
+                    </li>
+                    <li class="clearfix">
+                                <span><em>排序</em></span>
+                                <span><a class="time on" href="{channelpage:order-time-link}">最新</a></span>
+                                <span><a class="rq" href="{channelpage:order-hit-link}">人气</a></span>
+                                <span><a class="tj" href="{channelpage:order-commend-link}">推荐</a></span>
+
+                    </li>
+              </ul>
+        </div>
+	  <script src="http://js.csa3ks.com/putianjs/wenzielse.js"></script>
+	     <div class="channel clearfix">
+	            <ul class="cul">
+                        {seacms:channellist size=30 order=time type=current}
+                        <li>
+                              <a class="link" href="[channellist:link]" title="[channellist:name]">
+                                    <div class="pic">
+                                          <div class="img">
+                                                <img class="lazy" data-original="[channellist:pic]" src="[channellist:pic]" alt="[channellist:name]">
+                                                <span class="over"></span>
+                                                <span class="ico player-ico"></span>
+                                                {if:"[channellist:note]"<>""}<span class="state"><span class="bg2"></span><span class="ico lzpng ztpng">[channellist:note]</span></span>{end if}
+                                                {if:[channellist:state]<>0}<span class="lz"><em>至[channellist:state]集</em></span>{end if}
+                                                {if:[channellist:state]<>0}<span class="state"><span class="bg2"></span><span class="ico lzpng">连载</span></span>{end if}
+                                                <span class="bg"></span>
+                                                <span class="name">[channellist:name]</span>
+                                          </div>
+                                          
+                                     </div>           
+                              </a>
+                        </li>
+                        {/seacms:channellist}
+                  </ul>
+	      </div>
+      
+            <div class="page clearfix">
+                  {if:{channellist:page}<>1}<a href="{channellist:firstlink}">1..</a>
+                  <a href="{channellist:backlink}"><</a>{end if}
+                  {channellist:pagenumber len=8}
+                  {if:{channellist:page}<>[pagenumber:page]}
+                  <a href="[pagenumber:link]">[pagenumber:page]</a>
+                  {else}
+                  <em>[pagenumber:page]</em>
+                  {end if}
+                  {/channellist:pagenumber}
+                  {if:{channellist:page}<>{channellist:pagecount}}
+                  <a href="{channellist:nextlink}">></a>
+                  <a href="{channellist:lastlink}">..{channellist:pagecount}</a>
+                  {end if}
+            </div>   
+</div>
+{seacms:foot}
+</body></html>

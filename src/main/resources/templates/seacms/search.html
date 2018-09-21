@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>{seacms:searchword}-{seacms:sitename}</title>
+<meta name="keywords" content="{seacms:searchword},{seacms:sitename}" />
+<meta name="description" content="{seacms:searchword},{seacms:sitename}" />
+{seacms:load head_include.html}
+</head>
+<body>
+{seacms:top}
+<div class="wrap">
+	<div class="stitle"><a href="{seacms:indexlink}">首页</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;搜索
+      &nbsp;&nbsp;与<b class="key">{seacms:searchword}</b>相关共<b class="key">{seacms:searchnum}</b>条</div>
+     
+       <div class="searchlist">
+              <ul class="cul clearfix">
+                        {seacms:searchlist size=30 order=time type=all}
+                        <li>
+                              
+                              <a class="link" href="[searchlist:link]" title="[searchlist:name]">
+                                  <div class="pic">
+
+                                    
+                                          <div class="img">
+                                                <img class="lazy" data-original="[searchlist:pic]" src="images/load.png" alt="[searchlist:name]">
+                                          </div>
+                                      
+                                    <div class="info">
+                                          <p class="name">[searchlist:name]</p>
+                                          {if:"[searchlist:note]"<>""}<p class="zt">[searchlist:note]</p>{end if}
+                                          {if:[searchlist:state]<>0}<p class="lzz">至[searchlist:state]集</p>{end if}
+                                          <p class="actor">主演：[searchlist:nolinkactor]</p>
+                                          <p class="area">地区：[searchlist:publisharea]</p>
+                                          <p class="year">年份：[searchlist:publishtime]</p>
+                                    </div>
+                                    <span class="sp">播放</span>
+                                 </div>            
+                              </a>
+                              
+                        </li>
+                        {/seacms:searchlist}
+                  </ul>
+        </div>
+      
+            <div class="page clearfix">
+                  {if:{searchlist:page}<>1}<a href="{searchlist:firstlink}">1..</a>
+                  <a href="{searchlist:backlink}"><</a>{end if}
+                  {searchlist:pagenumber len=8}
+                  {if:{searchlist:page}<>[pagenumber:page]}
+                  <a href="[pagenumber:link]">[pagenumber:page]</a>
+                  {else}
+                  <em>[pagenumber:page]</em>
+                  {end if}
+                  {/searchlist:pagenumber}
+                  {if:{searchlist:page}<>{searchlist:pagecount}}
+                  <a href="{searchlist:nextlink}">></a>
+                  <a href="{searchlist:lastlink}">..{searchlist:pagecount}</a>
+                  {end if}
+            </div>   
+</div>   
+{seacms:foot}
+</body>
+</html>

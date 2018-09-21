@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>{seacms:sitename}</title>
+<meta name="keywords" content="{seacms:sitename} - {seacms:sitenotice}" />
+<meta name="description" content="{seacms:des}" />
+{seacms:load head_include.html}
+</head>
+<body>
+{seacms:top}
+<div class="wrap">  
+  <div class="col clearfix">
+            <div class="itj pleft">
+                  <div class="tjr">
+                        <ul class="iul clearfix">
+                              {seacms:videolist num=8 type=all order=time commend=all} 
+                                    <li>
+                                          <a class="link" href="[videolist:link]" title="[videolist:name]">
+                                                <div class="pic">
+                                                <div class="img">
+                                                      <img src="[videolist:pic]" alt="[videolist:name]">
+                                                      <span class="over"></span>
+                                                      <span class="ico player-ico"></span>
+                                                      {if:"[videolist:typename]"=="电影"}{subif:"[videolist:note]"<>""}<span class="state"><span class="bg"></span><span class="zt">[videolist:note]</span></span>{end subif}{else}{subif:[videolist:state]==0}<span class="state"><span class="bg"></span><span class="zt">完结</span></span>{end subif}{subif:[videolist:state]<>0}<span class="state"><span class="bg"></span><span class="zt">至[videolist:state]集</span></span>{end subif}{end if}
+                                                      <span class="text">
+                                                            <p class="name">[videolist:name]</p>
+                                                            <p class="actor">[videolist:nolinkactor]</p>
+                                                      </span>  
+                                                 </div>   
+                                                </div>
+                                          </a>
+                                    </li>
+                              {/seacms:videolist}
+                        </ul>
+                  </div>
+            </div>
+      
+            <div class="pright">
+                  <div class="rtittab tab1 clearfix">
+                        <ul>
+                              <li id="tab11" class="on" onclick="setTab('tab1','stab1',1,4)">好评榜</li>
+                              <li id="tab12" onclick="setTab('tab1','stab1',2,4)">日排行</li>
+                              <li id="tab13" onclick="setTab('tab1','stab1',3,4)">周排行</li>
+                              <li id="tab14" onclick="setTab('tab1','stab1',4,4)">月排行</li>
+                        </ul>
+                  </div>
+                  <div id="stab11" class="r-list clearfix">
+                        <ul>
+                         {seacms:videolist num=9 order=score type=all}
+                              <li><a href="[videolist:link]" title="[videolist:name]"><i class="score">[videolist:score]分</i><i class="ico i{if:[videolist:i]<4} i3{end if}">[videolist:i]</i>[videolist:name]</a></li>
+                         {/seacms:videolist}
+                        </ul>
+                  </div>
+                  <div id="stab12" class="r-list clearfix" style="display:none;">
+                        <ul>
+                         {seacms:videolist num=9 order=dayhit type=all}
+                              <li><a href="[videolist:link]" title="[videolist:name]"><i class="actor">{if:"[videolist:typename]"=="电影"}{subif:"[videolist:note]"<>""}[videolist:note]{end subif}{else}{subif:[videolist:state]==0}完结{end subif}{subif:[videolist:state]<>0}至[videolist:state]集{end subif}{end if}</i><i class="ico i{if:[videolist:i]<4} i3{end if}">[videolist:i]</i>[videolist:name]</a></li>
+                         {/seacms:videolist}
+                        </ul>
+                  </div>
+                  <div id="stab13" class="r-list clearfix" style="display:none;">
+                        <ul>
+                         {seacms:videolist num=9 order=weekhit type=all}
+                              <li><a href="[videolist:link]" title="[videolist:name]"><i class="actor">{if:"[videolist:typename]"=="电影"}{subif:"[videolist:note]"<>""}[videolist:note]{end subif}{else}{subif:[videolist:state]==0}完结{end subif}{subif:[videolist:state]<>0}至[videolist:state]集{end subif}{end if}</i><i class="ico i{if:[videolist:i]<4} i3{end if}">[videolist:i]</i>[videolist:name]</a></li>
+                         {/seacms:videolist}
+                        </ul>
+                  </div>
+                  <div id="stab14" class="r-list clearfix" style="display:none;">
+                        <ul>
+                         {seacms:videolist num=9 order=monthhit type=all}
+                              <li><a href="[videolist:link]" title="[videolist:name]"><i class="actor">{if:"[videolist:typename]"=="电影"}{subif:"[videolist:note]"<>""}[videolist:note]{end subif}{else}{subif:[videolist:state]==0}完结{end subif}{subif:[videolist:state]<>0}至[videolist:state]集{end subif}{end if}</i><i class="ico i{if:[videolist:i]<4} i3{end if}">[videolist:i]</i>[videolist:name]</a></li>
+                         {/seacms:videolist}
+                        </ul>
+                  </div>
+            </div>
+      </div>
+
+
+            {seacms:menulist type=top}
+            <div class="col clearfix">
+            <div class="index pleft">
+                  <div class="itit"><a class="mz" href="[menulist:link]">[menulist:typename]</a><a class="ico gd" href="[menulist:link]">更多</a></div>
+                  <ul class="iul clearfix">
+                        {seacms:videolist num=8 order=time type=[menulist:typeid]}
+                              <li>
+                              <a class="link" href="[videolist:link]" title="[videolist:name]">
+                                    <div class="pic">
+                                    <div class="img">
+                                          <span class="over"></span>
+                                          <span class="ico player-ico"></span>
+                                          <img class="lazy" data-original="[videolist:pic]" src="images/load.gif" alt="[videolist:name]">
+                                          {if:"[videolist:typename]"=="电影"}{subif:"[videolist:note]"<>""}<span class="state"><span class="bg"></span><span class="zt">[videolist:note]</span></span>{end subif}{else}{subif:[videolist:state]==0}<span class="state"><span class="bg"></span><span class="zt">完结</span></span>{end subif}{subif:[videolist:state]<>0}<span class="state"><span class="bg"></span><span class="zt">更新至[videolist:state]集</span></span>{end subif}{end if}
+                                          <div class="text">
+                                                <p class="name">[videolist:name]</p>
+                                                <p class="actor">[videolist:nolinkactor]</p>
+                                          </div>
+                                    </div>
+                                    </div>
+                              </a>
+                              </li>
+                        {/seacms:videolist}
+                  </ul>
+            </div>  
+            <div class="pright">
+                  <div class="rtittab clearfix">
+                        <ul>
+                              <li class="on">今日热门</li>
+                        </ul>
+                  </div>
+                  <div class="r-list clearfix">
+                        <ul>
+                         {seacms:videolist num=10 order=dayhit type=[menulist:typeid]}
+                              <li><a href="[videolist:link]" title="[videolist:name]"><i class="actor">{if:"[videolist:typename]"=="电影"}{subif:"[videolist:note]"<>""}[videolist:note]</i>{end subif}{else}{subif:[videolist:state]==0}完结{end subif}{subif:[videolist:state]<>0}至[videolist:state]集{end subif}{end if}</i><i class="ico i{if:[videolist:i]<4} i3{end if}">[videolist:i]</i>[videolist:name]</a></li>
+                         {/seacms:videolist}
+                        </ul>
+                  </div>
+            </div>
+            </div>          
+            {/seacms:menulist}
+
+      
+     
+                
+
+</div>
+{seacms:foot}
+<div class="gotop"><a class="gotopbg" href="javascript:;" title="返回顶部"></a></div>
+</body>
+</html>

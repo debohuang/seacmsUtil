@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>{seacms:topicname}_第{topicpagelist:page}页_{seacms:sitename}</title>
+<meta name="keywords" content="{seacms:topicname}第{topicpagelist:page}页" />
+<meta name="description" content="{seacms:topicname}第{topicpagelist:page}页" />
+{seacms:load head_include.html}
+</head>
+{seacms:top}
+<div class="wrap">
+	<div class="stitle"><a href={seacms:indexlink}>首页</a> > <a href={seacms:topiclink}>专题首页</a> > {seacms:topicname}</div>
+ 	     <div class="channel clearfix">
+	            <ul class="cul">
+                        {seacms:topicpagelist size=30 order=time}
+                        <li>
+                              <a class="link" href="[topicpagelist:link]" title="[topicpagelist:name]">
+                                    <div class="pic">
+                                          <div class="img">
+                                                <img class="lazy" data-original="[topicpagelist:pic]" src="images/load.png" alt="[topicpagelist:name]">
+                                                <span class="over"></span>
+                                                <span class="ico player-ico"></span>
+                                                {if:"[topicpagelist:note]"<>""}<span class="state"><span class="bg2"></span><span class="ico lzpng ztpng">[topicpagelist:note]</span></span>{end if}
+                                                {if:[topicpagelist:state]<>0}<span class="lz"><em>至[topicpagelist:state]集</em></span>{end if}
+                                                {if:[topicpagelist:state]<>0}<span class="state"><span class="bg2"></span><span class="ico lzpng">连载</span></span>{end if}
+                                                <span class="bg"></span>
+                                                <span class="name">[topicpagelist:name]</span>
+                                          </div>
+                                          
+                                     </div>           
+                              </a>
+                        </li>
+                        {/seacms:topicpagelist}
+                  </ul>
+	      </div>
+      
+            <div class="page clearfix">
+                  {if:{topicpagelist:page}<>1}<a href="{topicpagelist:firstlink}">1..</a>
+                  <a href="{topicpagelist:backlink}"><</a>{end if}
+                  {topicpagelist:pagenumber len=8}
+                  {if:{topicpagelist:page}<>[pagenumber:page]}
+                  <a href="[pagenumber:link]">[pagenumber:page]</a>
+                  {else}
+                  <em>[pagenumber:page]</em>
+                  {end if}
+                  {/topicpagelist:pagenumber}
+                  {if:{topicpagelist:page}<>{topicpagelist:pagecount}}
+                  <a href="{topicpagelist:nextlink}">></a>
+                  <a href="{topicpagelist:lastlink}">..{topicpagelist:pagecount}</a>
+                  {end if}
+            </div>   
+</div>
+{seacms:foot}
+</body>
+</html>

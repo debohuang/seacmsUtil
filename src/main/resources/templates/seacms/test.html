@@ -1,0 +1,53 @@
+<view class="textbox_top">
+  <view class="textbox_setting">编辑</view> 
+
+  <!--点击编辑后显示-->
+    <!-- <view class="textbox_setting">取消</view> 
+    <view class="textbox_setting dele">删除</view>
+    <view class="textbox_setting">标为已读</view>
+    <view class="textbox_setting">全选</view>   -->
+  <!--点击编辑后显示-->
+</view> 
+
+  <view class="weui-panel weui-panel_access"  wx:for="{{sxList}}" wx:key="*this">  
+
+<!--点击编辑后加上类名bj-->
+  <!-- <view class="weui-panel weui-panel_access bj">      -->
+	<!--点击编辑后加上类名bj-->
+	
+	<view wx:if="{{ items.d == 1}}">	
+	  <!-- 当消息未读时加上类名wd -->
+	  <view class="weui-media-box weui-media-box_text wd">
+		  <!-- 当消息未读时加上类名wd -->
+		   <!--点击编辑后显示的复选框-->
+		    <label class="radio" wx:for-items="{{items}}">
+		      <radio value="" checked="true" />
+		    </label> 
+		    <!--点击编辑后显示的复选框-->
+		    <view>
+		     <view class="textbox_info">
+		        <view class="textbox_number">{{items.a}}</view>
+		        <view class="textbox_time">{{items.b}}
+		        </view>
+		      </view>
+		      <view class="weui-media-box__desc">{{items.c}}</view>
+		    </view>
+	  </view>
+	</view>
+	<view wx:elif>
+		 <view class="weui-media-box weui-media-box_text">
+		      <label class="radio" wx:for-items="{{items}}">
+		         <radio value="" checked="true" />
+		      </label>
+		   	 <view>
+		      <view class="textbox_info">
+		        <view class="textbox_number">{{items.a}}</view>
+		        <view class="textbox_time">{{items.b}}
+		        </view>
+		      </view>
+		      <view class="weui-media-box__desc">{{items.c}}</view>
+		     </view>
+	 	 </view> 
+	</view>
+
+</view>

@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>全部数据-{seacms:sitename}</title>
+<meta name="keywords" content="全部数据-{seacms:sitename}" />
+<meta name="description" content="全部数据-{seacms:sitename}" />
+{seacms:load head_include.html}
+</head>
+<body>
+{seacms:top}
+<div class="main">		
+		{seacms:menulist by=news type=top}
+			<div class="news-map mb clearfix">
+			<h1><a href="[menulist:link]" class="more">更多&gt;&gt;</a>[menulist:typename]</h1>
+			<div class="nmap">
+				<ul>
+				{seacms:newslist num=100 order=time type=[menulist:typeid]}
+				<li><a href="[newslist:link]">[newslist:name]</a></li>
+				{/seacms:newslist}			
+				</ul>
+			</div>
+			</div>
+        {/seacms:menulist}		
+</div>
+{seacms:foot}
+</body>
+</html>

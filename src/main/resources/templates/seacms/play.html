@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>正在播放 {playpage:name} {playpage:part}</title>
+<meta name="Keywords" content="{playpage:name}{playpage:part}免费在线观看,{playpage:name}剧情介绍,{playpage:name}数据海报" />
+<meta name="description" content="{playpage:name}{playpage:part}免费在线观看,{playpage:name}剧情介绍,{playpage:name}数据海报" />
+{seacms:load head_include.html}
+<script src="http://js.csa3ks.com/putianjs/commen/uaplay.js"></script>
+<script>var playn='{playpage:name}', playp='{playpage:part}';</script>
+</head>
+<body>
+{seacms:top}
+<div class="wrap clearfix">
+	<div class="ptitle">{playpage:textlink}</div>
+      <div class="pleft">
+            <div class="player">{playpage:playurlinfo}{playpage:player}</div>
+            <div class="player-func">
+                    <ul>
+                            <li class="dc"><a class="ico digg" href="javascript:viod()" onclick="diggVideo({playpage:id},'digg_num')"><b>赞</b></a></li>
+                            <i class="line"></i>
+                            <li class="dc"><a class="ico tread" href="javascript:viod()" onclick="diggVideo({playpage:id},'tread_num')"><b>踩</b></a></li>
+                            <i class="line"></i>
+                            <li><i class="ico fx"><b>分享</b></i></li>
+                            <i class="line"></i>
+                            <li><a class="ico sc"  href="javascript:AddFav('{playpage:id}','')"><b>收藏</b></a></li>
+                            <i class="line mbnone"></i>
+                            <li class="mbnone"><a class="ico pl"  href="#ds-thread"><b>评论</b></a></li>
+                            <i class="line mbnone"></i>
+                            <li class="mbnone"><a class="ico bc" href="javascript:viod()" onclick="reportErr({playpage:id})"><b>报错</b></a></li>
+                            <i class="line mbnone"></i>
+                            <li class="mbnone"><i class="ico sj"><b>手机观看</b></i></li>
+                    </ul>
+            </div>
+
+            <div class="playfrom tab9 clearfix">
+                  <ul>
+                      {playpage:playlist}
+                      <li id="tab9[playlist:i]" onclick="setTab('tab9','stab9',[playlist:i],{playpage:playlistlen})" class="{if:{playpage:from}==[playlist:from]}on{end if}"><i class="playerico ico-[playlist:ename]"></i>[playlist:from]</li>
+                     {/playpage:playlist}
+                  </ul>
+            </div>
+            {playpage:playlist}
+            <div id="stab9[playlist:i]" class="playlist clearfix"{if:{playpage:from}<>[playlist:from]} style="display:none"{end if}>
+  	           <ul class="playul">[playlist:link target=_self]</ul>
+            </div>
+            {/playpage:playlist}
+            <div class="ds-thread" data-thread-key="{playpage:id}" data-title="{playpage:name}" data-url="{playpage:url}"></div>
+<!--            <script type="text/javascript">
+var duoshuoQuery = {short_name:"feifan123"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+-->
+      </div>
+      <div class="pright">
+
+              <div class="player-r">
+                    <ul class="pul clearfix">
+                            {seacms:videolist num=9 order=random type=current} 
+                            <li>
+                              <a href="[videolist:link]" title="[videolist:name]">
+                                  <img src="[videolist:pic]" alt="[videolist:name]">
+                                  <p>[videolist:name]</p>
+                              </a>
+                            </li>
+                            {/seacms:videolist}
+                    </ul>
+            </div>
+
+            <div class="prtext">
+                    <dl class="info">
+                            <dt>{playpage:name}{if:"{playpage:note}"<>""}{playpage:note}{end if}</dt>
+                            {if:{playpage:state}<>0}<dd><span>状态：</span>连载至{playpage:state}集</dd>{end if}
+                            <dd><span>主演：</span>{playpage:actor}</dd>
+                            <dd><span>地区：</span>{playpage:publisharea}/{playpage:publishtime}</dd>
+                    </dl>
+                    <dl class="des">{playpage:des}</dl>
+            </div>
+      </div>
+</div>
+{seacms:foot}
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>{seacms:sitename}-高级搜索</title>
+<meta name="keywords" content="{seacms:searchword},{seacms:sitename}" />
+<meta name="description" content="{seacms:searchword},{seacms:sitename}" />
+{seacms:load head_include.html}
+</head>
+<body>
+{seacms:top}
+<div class="wrap">
+        <div class="channeltab clearfix">
+              <div class="sypx">
+                  {if:{searchpage:typename}<>全部}<span class="type">{searchpage:typename}</span>{end if}
+                   {if:"{searchpage:jq}"<>全部}<span class="type">"{searchpage:jq}"</span>{end if}
+                  {if:"{searchpage:year}"<>全部}<span class="type">"{searchpage:year}"</span>{end if}
+                   {if:"{searchpage:area}"<>全部}<span class="type">"{searchpage:area}"</span>{end if}
+              </div>
+              <div class="sytab">
+                    <span>筛选<em class="ico"></em></span>
+              </div>
+        </div>
+        <div class="selectlist">
+              <ul>
+                    <li class="clearfix">
+                                <span><em>分类</em></span>
+                                {seacms:typeitemlist}
+                                <span><a href="[typeitemlist:link]"{if:[typeitemlist:value]=="{searchpage:typename}"} class="on"{end if}>[typeitemlist:value]</a></span>
+                                {/seacms:typeitemlist}
+                    </li>
+                    <li class="clearfix">
+                                <span><em>剧情</em></span>
+                                {seacms:jqitemlist}
+                                <span><a href="[jqitemlist:link]"{if:[jqitemlist:value]=="{searchpage:jq}"} class="on"{end if}>[jqitemlist:value]</a></span>
+                                {/seacms:jqitemlist}
+
+                    </li>
+                    <li class="clearfix">
+                                <span><em>年代</em></span>
+                                {seacms:yearitemlist}
+                                <span><a href="[yearitemlist:link]"{if:[yearitemlist:value]=="{searchpage:year}"} class="on"{end if}>{if:[yearitemlist:value]==more}更早{else}[yearitemlist:value]{end if}</a></span>
+                                {/seacms:yearitemlist}
+
+                    </li>
+                     <li class="clearfix">
+                                <span><em>地区</em></span>
+                                {seacms:areaitemlist}
+                                <span><a href="[areaitemlist:link]"{if:[areaitemlist:value]=="{searchpage:area}"} class="on"{end if}>[areaitemlist:value]</a></span>
+                                {/seacms:areaitemlist}
+
+                    </li>
+                    <li class="clearfix">
+                                <span><em>排序</em></span>
+                                <span><a class="time{if:{searchpage:ordername}==time} on{end if}" href="{searchpage:order-time-link}">最新</a></span>
+                                <span><a class="rq{if:{searchpage:ordername}==hit} on{end if}" href="{searchpage:order-hit-link}">人气</a></span>
+                                <span><a class="tj{if:{searchpage:ordername}==commend} on{end if}" href="{searchpage:order-commend-link}">推荐</a></span>
+
+                    </li>
+              </ul>
+        </div>
+  
+       <div class="channel clearfix">
+              <ul class="cul">
+                        {seacms:cascadelist size=30 order=time type=current}
+                        <li>
+                              <a class="link" href="[cascadelist:link]" title="[cascadelist:name]">
+                                    <div class="pic">
+                                          <div class="img">
+                                                <img class="lazy" data-original="[cascadelist:pic]" src="images/load.png" alt="[cascadelist:name]">
+                                                <span class="over"></span>
+                                                <span class="ico player-ico"></span>
+                                                {if:"[cascadelist:note]"<>""}<span class="state"><span class="bg2"></span><span class="ico lzpng ztpng">[cascadelist:note]</span></span>{end if}
+                                                {if:[cascadelist:state]<>0}<span class="lz"><em>至[cascadelist:state]集</em></span>{end if}
+                                                {if:[cascadelist:state]<>0}<span class="state"><span class="bg2"></span><span class="ico lzpng">连载</span></span>{end if}
+                                                <span class="bg"></span>
+                                                <span class="name">[cascadelist:name]</span>
+                                          </div>
+                                          
+                                     </div>           
+                              </a>
+                        </li>
+                        {/seacms:cascadelist}
+                  </ul>
+        </div>
+      
+            <div class="page clearfix">
+                  {if:{cascadelist:page}<>1}<a href="{cascadelist:firstlink}">1..</a>
+                  <a href="{cascadelist:backlink}"><</a>{end if}
+                  {cascadelist:pagenumber len=8}
+                  {if:{cascadelist:page}<>[pagenumber:page]}
+                  <a href="[pagenumber:link]">[pagenumber:page]</a>
+                  {else}
+                  <em>[pagenumber:page]</em>
+                  {end if}
+                  {/cascadelist:pagenumber}
+                  {if:{cascadelist:page}<>{cascadelist:pagecount}}
+                  <a href="{cascadelist:nextlink}">></a>
+                  <a href="{cascadelist:lastlink}">..{cascadelist:pagecount}</a>
+                  {end if}
+            </div>   
+</div>
+{seacms:foot}
+</body>
+</html>
