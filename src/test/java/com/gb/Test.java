@@ -29,7 +29,7 @@ public class Test {
 		DateTime today = new DateTime();
         DateTime datetorrow = today.plusDays(1);
 
-        System.out.println(today.toString("yyyy-MM-dd"));//2017-06-26 test update
+        System.out.println(today.toString("yyyy-MM-dd"));//2017-06-26 test update001
         System.out.println(today.toString("yyyy-MM-dd HH:mm:ss"));//2017-06-26 22:04:03
         System.out.println(datetorrow.toString("yyyy-MM-dd"));//2017-06-27
 	}
