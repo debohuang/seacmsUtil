@@ -1,4 +1,4 @@
-package com.gb;
+﻿package com.gb;
 
 import java.sql.Timestamp;
 import java.util.HashMap;
@@ -34,6 +34,7 @@ public class Test {
         System.out.println(datetorrow.toString("yyyy-MM-dd"));//2017-06-27
 	}
 	
+
 	@Ignore 
 	@org.junit.Test
 	public void test() {
